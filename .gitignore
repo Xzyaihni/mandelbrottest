@@ -3,3 +3,5 @@
 /mandelbrot0.cbp
 /mandelbrot0.depend
 /mandelbrot0.layout
+bin/
+obj/
