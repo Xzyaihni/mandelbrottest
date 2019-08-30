@@ -1,4 +1,3 @@
-#include "bitmap_image.hpp"
 #include <math.h>
 #include <iostream>
 #include <SFML/Graphics.hpp>
