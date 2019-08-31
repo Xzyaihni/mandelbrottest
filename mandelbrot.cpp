@@ -6,7 +6,7 @@
 
 using namespace std;
 
-int displayWindow(double xbD, double ybD, double zoomD)
+int displayWindow(double xbD, double ybD, double zoomD, unsigned int width, unsigned int height, unsigned int iterations)
 {
     sf::RenderWindow window(sf::VideoMode(500,500),"Mandelbrot viewer");
 
@@ -38,7 +38,7 @@ int displayWindow(double xbD, double ybD, double zoomD)
                 cout << xbD << endl;
                 cout << ybD << endl;
                 cout << zoomD << endl;
-                drawMandelbrot(500,500,1000,xbD,ybD,zoomD);
+                drawMandelbrot(width,height,iterations,xbD,ybD,zoomD);
                 texture.loadFromFile("mandelbrot.bmp");
             }
         }
@@ -65,5 +65,5 @@ int main()
 
     drawMandelbrot(width,height,iterations,xb,yb,zoom);
 
-    return displayWindow(xb,yb,zoom);
+    return displayWindow(xb,yb,zoom,width,height,iterations);
 }

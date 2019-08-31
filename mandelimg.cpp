@@ -15,6 +15,8 @@ void drawMandelbrot(unsigned int width, unsigned int height, unsigned int iterat
     double R = M_LN2;
 
     double red = 1/R;
+    //double green = 0.1f/R;
+    //double blue = 0.01f/R;
     double green = (1/(3*M_SQRT2))/R;
     double blue = (1/(7*pow(3,1./8.)))/R;
 
