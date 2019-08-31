@@ -34,17 +34,17 @@ double point(double x, double y, unsigned int iterations, double R)
             imag = 2*real*imag+y;
             real = real2-imag2+x;
 
+            if((real==ckr)&&(imag==cki))
+            {
+                return 0;
+            }
+
             real2 = real*real;
             imag2 = imag*imag;
 
-            if((real==ckr)&&(imag==cki))
+            if(sqrt(real2+imag2)>100)
             {
-                return color*2;
-            }
-
-            if(sqrt(real2+imag2)>10000)
-            {
-                double V = log(sqrt(real2+imag2))/(1<<p);
+                double V = log(sqrt(real2+imag2))/pow(2,p);
                 color = log(V)/R;
                 return color;
             }
@@ -52,5 +52,5 @@ double point(double x, double y, unsigned int iterations, double R)
         }
     }
     while(ptot!=iterations);
-    return color*2;
+    return 0;
 }

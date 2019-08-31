@@ -15,8 +15,8 @@ void drawMandelbrot(unsigned int width, unsigned int height, unsigned int iterat
     double R = M_LN2;
 
     double red = 1/R;
-    double green = (1/(3*sqrt(2)))/R;
-    double blue = (1/(7*pow(3,0.125f)))/R;
+    double green = (1/(3*M_SQRT2))/R;
+    double blue = (1/(7*pow(3,1./8.)))/R;
 
     #pragma omp parallel for collapse(2)
     for(unsigned int y = 0; y < height; y++)
@@ -24,9 +24,9 @@ void drawMandelbrot(unsigned int width, unsigned int height, unsigned int iterat
         for(unsigned int x = 0; x < width; x++)
         {
             double result = point(xb+dc*(x-(double)width/2),yb+dc*(y-(double)height/2),iterations,R);
-            image.set_pixel(x,y,(1-cos(red*result))/2*255,
-                            (1-cos(green*result))/2*255,
-                            (1-cos(blue*result))/2*255);
+            image.set_pixel(x,y,(1-cos(blue*result))*127.5f,
+                            (1-cos(red*result))*127.5f,
+                            (1-cos(green*result))*127.5f);
         }
     }
 
