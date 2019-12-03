@@ -1,5 +1,6 @@
 #include "bitmap_image.hpp"
 #include <cmath>
+#include <complex>
 #include "mandelimg.h"
 #include "mandelpoint.h"
 
@@ -72,6 +73,9 @@ void drawMandelbrot(unsigned int width, unsigned int height, unsigned int iterat
     double dc = zoom/((double)max(width,height)-1);
 
     double R = M_LN2;
+	//int angle = 45;
+	//complex<double> complexDir(0,angle*2*M_PI/360);
+	//complex<double> dir = exp(complexDir);
 
 	HsvColor col;
     col.h = round(1/R * 255);
@@ -79,16 +83,20 @@ void drawMandelbrot(unsigned int width, unsigned int height, unsigned int iterat
     col.v = round((1/(7*pow(3,1./8.)))/R * 255);
 	
 	RgbColor newCol = HsvToRgb(col);
+	//RgbColor newCol;
+	//newCol.r = col.h;
+	//newCol.g = col.s;
+	//newCol.b = col.v;
 
     #pragma omp parallel for collapse(2)
     for(unsigned int y = 0; y < height; y++)
     {
         for(unsigned int x = 0; x < width; x++)
         {
-            double result = point(xb+dc*(x-(double)width/2),yb+dc*(y-(double)height/2),iterations,R);
-            image.set_pixel(x,y,(1-cos((float)newCol.r/255*result))*127.5f,
-                            (1-cos((float)newCol.g/255*result))*127.5f,
-                            (1-cos((float)newCol.b/255*result))*127.5f);
+            double result = point(xb+dc*(x-(double)width/2),yb+dc*(y-(double)height/2),iterations,R);//,dir.real(),dir.imag());
+            image.set_pixel(x,y,(1-cos((float)newCol.r/255*result))*127,
+                            (1-cos((float)newCol.g/255*result))*127,
+                            (1-cos((float)newCol.b/255*result))*127);
         }
     }
 
