@@ -1,7 +1,1 @@
-/mandelbrot.bmp
-/mandelbrot0.cbp
-/mandelbrot0.depend
-/mandelbrot0.layout
-/mandelrender.cpp
-bin/
-obj/
+/*.o

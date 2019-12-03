@@ -1,5 +1,5 @@
 #include "bitmap_image.hpp"
-#include <math.h>
+#include <cmath>
 #include "mandelimg.h"
 #include "mandelpoint.h"
 
