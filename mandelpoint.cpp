@@ -2,10 +2,10 @@
 #include <complex>
 #include "mandelpoint.h"
 
-double point(double x, double y, unsigned int iterations, double R)//, double lightDirR, double lightDirI)
+__float128 point(long double x, long double y, unsigned int iterations, double R)//, double lightDirR, double lightDirI)
 {
-    double color = 1;
-	float lHeight = 1.5;
+    __float128 color = 1;
+	//float lHeight = 1.5;
 
     double ckr, cki;
 

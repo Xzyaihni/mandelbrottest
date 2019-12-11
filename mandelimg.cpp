@@ -66,11 +66,11 @@ RgbColor HsvToRgb(HsvColor hsv)
 }
 
 void drawMandelbrot(unsigned int width, unsigned int height, unsigned int iterations,
-                    double xb, double yb, double zoom)
+                    __float128 xb, __float128 yb, __float128 zoom)
 {
-        bitmap_image image(width,height);
+    bitmap_image image(width,height);
 
-    double dc = zoom/((double)max(width,height)-1);
+    __float128 dc = zoom/((__float128)max(width,height)-1);
 
     double R = M_LN2;
 	//int angle = 45;
@@ -93,7 +93,7 @@ void drawMandelbrot(unsigned int width, unsigned int height, unsigned int iterat
     {
         for(unsigned int x = 0; x < width; x++)
         {
-            double result = point(xb+dc*(x-(double)width/2),yb+dc*(y-(double)height/2),iterations,R);//,dir.real(),dir.imag());
+            double result = point(xb+dc*(x-(long double)width/2),yb+dc*(y-(long double)height/2),iterations,R);//,dir.real(),dir.imag());
             image.set_pixel(x,y,(1-cos((float)newCol.r/255*result))*127,
                             (1-cos((float)newCol.g/255*result))*127,
                             (1-cos((float)newCol.b/255*result))*127);

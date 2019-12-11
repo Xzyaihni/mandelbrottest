@@ -1,4 +1,4 @@
 #ifndef MANDELPOINT_H
 #define MANDELPOINT_H
-double point(double,double,unsigned int,double);//,double,double);
+__float128 point(long double,long double,unsigned int,double);//,double,double);
 #endif

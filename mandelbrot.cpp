@@ -8,7 +8,7 @@
 
 using namespace std;
 
-int displayWindow(long double xbD, long double ybD, long double zoomD, unsigned int width, unsigned int height, unsigned int iterations)
+int displayWindow(__float128 xbD, __float128 ybD, __float128 zoomD, unsigned int width, unsigned int height, unsigned int iterations)
 {
     sf::RenderWindow window(sf::VideoMode(width,height),"Mandelbrot viewer");
 
@@ -31,12 +31,12 @@ int displayWindow(long double xbD, long double ybD, long double zoomD, unsigned 
             if(event.type == sf::Event::MouseButtonPressed)
             {
                 sf::Vector2i position = sf::Mouse::getPosition(window);
-                xbD += (position.x/double(width)-0.5)*zoomD;
-                ybD += (position.y/double(height)-0.5)*zoomD;
+                xbD += (position.x/(__float128)width-0.5)*zoomD;
+                ybD += (position.y/(__float128)height-0.5)*zoomD;
                 zoomD /= 2;
-                cout << xbD << endl;
-                cout << ybD << endl;
-                cout << zoomD << endl;
+                cout << (long double)xbD << endl;
+                cout << (long double)ybD << endl;
+                cout << (long double)zoomD << endl;
                 drawMandelbrot(width,height,iterations,xbD,ybD,zoomD);
                 texture.loadFromFile("mandelbrot.bmp");
             }
@@ -77,7 +77,7 @@ setType SetArg(string tooltip)
 int main()
 {
     unsigned int width,height,iterations;
-    long double xb,yb,zoom;
+    __float128 xb,yb,zoom;
 
     bool interactive;
 
